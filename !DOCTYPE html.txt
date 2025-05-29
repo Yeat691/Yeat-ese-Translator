@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yeat Slang Translator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1a1a;
+      color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .container {
+      background: #2a2a2a;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #000;
+      width: 90%;
+      max-width: 500px;
+    }
+    input, select, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+    }
+    button {
+      background: #00ff88;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 15px;
+      font-size: 18px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>Yeat Slang Translator</h1>
+  <div class="container">
+    <input type="text" id="inputWord" placeholder="Enter Yeat slang (e.g. Twizzy)" />
+    <select id="language">
+      <option value="en">Translate to English</option>
+      <option value="de">Übersetze ins Deutsche</option>
+    </select>
+    <button onclick="translate()">Translate</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    const dictionary = {
+      twizzy: {
+        en: "Close friend, brother, homie",
+        de: "Enger Freund, Bruder, Homie"
+      },
+      "luh geeky": {
+        en: "Alter ego, crazy version of Yeat",
+        de: "Durchgeknalltes Alter Ego von Yeat"
+      },
+      geek: {
+        en: "Wild person, someone who’s hyped",
+        de: "Durchgeknallter Typ, verrückt drauf"
+      },
+      tonka: {
+        en: "Big luxury SUV or car (Tonka Truck)",
+        de: "Riesiges Luxusauto oder SUV"
+      },
+      blankety: {
+        en: "Someone who’s blanked out, clueless",
+        de: "Planloser, geistesabwesender Typ"
+      },
+      craenky: {
+        en: "Crazy, turnt up, wild energy",
+        de: "Durchgedreht, aufgedreht, irre"
+      }
+    };
+
+    function translate() {
+      const word = document.getElementById("inputWord").value.toLowerCase().trim();
+      const lang = document.getElementById("language").value;
+      const output = document.getElementById("output");
+
+      if (dictionary[word]) {
+        output.textContent = dictionary[word][lang];
+      } else {
+        output.textContent = "No translation found 😕";
+      }
+    }
+  </script>
+</body>
+</html>
