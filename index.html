@@ -10,22 +10,34 @@
       background: #1a1a1a;
       color: #f1f1f1;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
       margin: 0;
     }
-    h1 {
-      margin-bottom: 20px;
-    }
-    .container {
+    .wrapper {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
       background: #2a2a2a;
-      padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 10px #000;
-      width: 90%;
-      max-width: 500px;
+    }
+    .input-section, .output-section {
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+    }
+    .input-section {
+      background: #3a3a3a;
+    }
+    .output-section {
+      background: #1f1f1f;
+      border-left: 3px solid #00ff88;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
     }
     input, select, button {
       padding: 10px;
@@ -42,22 +54,28 @@
       cursor: pointer;
     }
     #output {
-      margin-top: 15px;
       font-size: 18px;
+      margin-top: 10px;
       font-style: italic;
+      color: #00ff88;
     }
   </style>
 </head>
 <body>
-  <h1>Yeat Slang Translator</h1>
-  <div class="container">
-    <input type="text" id="inputWord" placeholder="Enter Yeat slang (e.g. Twizzy)" />
-    <select id="language">
-      <option value="en">Translate to English</option>
-      <option value="de">Übersetze ins Deutsche</option>
-    </select>
-    <button onclick="translate()">Translate</button>
-    <div id="output"></div>
+  <div class="wrapper">
+    <div class="input-section">
+      <h1>Slang Input</h1>
+      <input type="text" id="inputWord" placeholder="Enter Yeat slang (e.g. Twizzy)" />
+      <select id="language">
+        <option value="en">Translate to English</option>
+        <option value="de">Übersetze ins Deutsche</option>
+      </select>
+      <button onclick="translate()">Translate</button>
+    </div>
+    <div class="output-section">
+      <h1>Translation</h1>
+      <div id="output">Your result will appear here...</div>
+    </div>
   </div>
 
   <script>
@@ -97,6 +115,7 @@
         output.textContent = dictionary[word][lang];
       } else {
         output.textContent = "No translation found 😕";
+        output.style.color = "#ff5555";
       }
     }
   </script>
